@@ -26,7 +26,7 @@ case class Queue(n:Int)
 
     currentAverage = ((currentAverage * previousNumItems) - dequedItem + num)/numItems
     previousNumItems = numItems
-    println("Inserted Number = " + num + ", Moving Average = " + currentAverage)
+    println("Inserted Number = " + num + ", Moving Average = " + currentAverage + ", Dropped = " + dequedItem + " Queue = " + arr.mkString(","))
 
   }
 
@@ -54,7 +54,7 @@ object RunningAverageWithQueue {
 
   def main(args: Array[String]): Unit = {
 
-    val myQueue = Queue(10)
+    val myQueue = Queue(5)
     var i =1
     val r = scala.util.Random
     while(i<100) {
