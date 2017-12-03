@@ -98,7 +98,7 @@ object CollectionClassI {
     def getRandomItem:Int = {
       val rInt = r.nextInt(hm.keys.size)
       val arr = hm.keys.toArray
-      val ret = hm(arr(rInt)).getRandom
+      val ret = hm(arr(rInt)).getRandom     // return the arr(rInt) is enough since only a random key is needed
       println("Random Item = " + ret)
       ret
     }
