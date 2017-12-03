@@ -2,6 +2,9 @@ package my.coding.practise
 
 /**
   * Created by subhankardeysarkar on 12/3/17.
+  * https://leetcode.com/problems/scramble-string/description/
+  * give every char of a string value 1, and group by and sum so it forms a->1, b->1, c->1... etc
+  * compare two strings by filtering one map from the other which should result in empty set and the string sizes be same
   */
 object CheckAnagram {
 
