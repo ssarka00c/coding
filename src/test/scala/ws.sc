@@ -4,4 +4,3 @@
 
 
 val input = Array(3,4,2,7,8)
-input.sorted.combinations(2)
