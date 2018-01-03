@@ -9,9 +9,11 @@ object EncodeDecodeString {
 
   def encode(lst:List[String]):String = {
 
-    lst.map{ x=>
-     x.replaceAll(",","\\\\,")
-    }.mkString(",")
+    lst.map{ x =>
+
+     "\"" + x.replaceAll("\"","\\\\\"") + "\""
+
+    }.mkString("")
   }
 
 
@@ -20,19 +22,30 @@ object EncodeDecodeString {
     var retList:List[String] = Nil
     var pc = 'x'
     var curStr = ""
+    var openDoubleQoute = false
     for(c<-str)
       {
-        if(pc != '\\' && c == serializerSeperator)
-          {
-            retList ++= List(curStr.replaceAll("\\\\,",","))
-            curStr=""
-          }
-        else
-        {
-          curStr +=c
-        }
 
-          pc = c
+        if(pc != '\\' && c == '"') {
+          openDoubleQoute = !openDoubleQoute
+          if(!openDoubleQoute && curStr.length>0)
+            {
+              retList ++=List(curStr)
+              curStr = ""
+            }
+        }
+        else
+          {
+            if(openDoubleQoute)
+              {
+                if(c!='\\')
+                  curStr += c
+                pc = c
+              }
+
+          }
+
+
       }
 
     if(curStr.length>0)
@@ -44,13 +57,16 @@ retList
 
   def main(args: Array[String]): Unit = {
 
-    val input = List("a\",uhasihd89yr8hdqknbc","xyzdasdas?????--348092i0√ \"\\\"\"4","009")
-    println(s"Input = ${input}")
+  //  val input = List("a\",uhasihd89yr8hdqknbc","xyzdasdas?????--348092i0√ \"\\\"\"4","009")
+    val input = List("ab,c","xy\"z","mn\"")
+    println("Input List")
+    input.map(println)
     //println(decode(encode(input)))
     val encodedStr = encode(input)
     println(s"Encoded String = ${encodedStr}")
     val decodedList = decode(encodedStr)
-    println(s"Decoded List = ${decodedList}")
+    println("Decoded List")
+    decodedList.map(println)
 
   }
 
