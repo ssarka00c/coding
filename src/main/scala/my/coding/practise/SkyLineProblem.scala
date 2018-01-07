@@ -202,6 +202,7 @@ object SkyLineProblem {
     output ::= (connectedList.last.end,0)
 
 println(output.sortBy(_._1))
+    //List((2,10), (3,15), (7,12), (12,0), (15,10), (20,8), (24,0))
 
   }
 
