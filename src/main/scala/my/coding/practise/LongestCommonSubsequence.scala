@@ -40,8 +40,8 @@ object LongestCommonSubsequence {
 
   def main(args: Array[String]): Unit = {
 
-    val str1 = "aaeiiiooouuuuu"
-    val str2 = "aseeeit"
+    val str1 = "yabcdbcax"
+    val str2 = "xabcdcbay"
 
     println(s"LCS = ${getLCS(str1.split(""),str2.split(""))}")
 
